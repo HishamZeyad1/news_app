@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'PageModel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../PageModel.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
+
+import 'home_screen.dart';
 
 class OnBoarding extends StatefulWidget {
   @override
@@ -115,7 +118,18 @@ class _OnBoardingState extends State<OnBoarding> {
                     letterSpacing: 1,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        _updateSeen();
+                        return HomeScreen();
+                      },
+                    ),
+                  );
+
+                },
               ),
             ),
           ),
@@ -146,6 +160,14 @@ class _OnBoardingState extends State<OnBoarding> {
           ),
     );
   }
+
+  void _updateSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool( 'seen' , true);
+  }
 }
+
+
+
 
 
