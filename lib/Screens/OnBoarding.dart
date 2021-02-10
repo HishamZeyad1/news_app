@@ -123,7 +123,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        _updateSeen();
+                        // _updateSeen();
                         return HomeScreen();
                       },
                     ),

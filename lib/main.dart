@@ -30,7 +30,7 @@ class NewsApp  extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
-      home:this._screen,
+      home:OnBoarding(),//this._screen
     );
   }
 }
