@@ -5,18 +5,26 @@ import 'package:news_app/home_tabs/whats_new.dart';
 import 'package:news_app/shared_ui/navigation_drawer.dart';
 // import '../shared_ui/navigation_drawer.dart';
 class HomeScreen extends StatefulWidget {
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
+enum PopOutMenu { HELP, ABOUT, CONTACT, SETTINGS }
 
 class _HomeScreenState extends State<HomeScreen>with SingleTickerProviderStateMixin {
   TabController _tabController;
-  @override
+
+@override
   void initState() {
     // TODO: implement initState
     super.initState();
     _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
-
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _tabController.dispose();
   }
 
   @override
@@ -27,7 +35,9 @@ class _HomeScreenState extends State<HomeScreen>with SingleTickerProviderStateMi
           centerTitle: false,
           actions: <Widget>[
             IconButton(icon: Icon(Icons.search), onPressed: () {}),
-            IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+            // IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+            _popOutMenu(context),
+
           ],
           bottom: TabBar(
             indicatorColor: Colors.white,
@@ -54,6 +64,38 @@ class _HomeScreenState extends State<HomeScreen>with SingleTickerProviderStateMi
         ] , controller: _tabController,  ),
       ),
     );
+
+
   }
-}
+
+  Widget _popOutMenu(BuildContext context) {
+    return PopupMenuButton<PopOutMenu>(
+      itemBuilder: (context) {
+        return [
+          PopupMenuItem<PopOutMenu>(
+            value: PopOutMenu.ABOUT,
+            child: Text('ABOUT'),
+          ),
+          PopupMenuItem<PopOutMenu>(
+            value: PopOutMenu.CONTACT,
+            child: Text('CONTACT'),
+          ),
+          PopupMenuItem<PopOutMenu>(
+            value: PopOutMenu.HELP,
+            child: Text('HELP'),
+          ),
+          PopupMenuItem<PopOutMenu>(
+            value: PopOutMenu.SETTINGS,
+            child: Text('SETTINGS'),
+          ),
+        ];
+      },
+      onSelected: (PopOutMenu menu) {
+        // TODO :
+      },
+      icon: Icon(Icons.more_vert),
+    );
+  }
+  }
+
 

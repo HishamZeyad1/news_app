@@ -1,7 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:news_app/Screens/facebook_feeds.dart';
 import 'package:news_app/Screens/headline_news.dart';
 import 'package:news_app/Screens/home_screen.dart';
+import 'package:news_app/Screens/instagram_feed.dart';
+import 'package:news_app/Screens/twitter_feed.dart';
 import 'package:news_app/models/nav_menu.dart';
 
 class NavigationDrawer extends StatefulWidget {
@@ -13,6 +16,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     List<NavMenuItem> navigationMenu = [
       NavMenuItem('Explore',()=>HomeScreen()),
       NavMenuItem('Headline News',()=>HeadLineNews()),
+      NavMenuItem('TwitterFeeds',()=>TwitterFeed()),
+      NavMenuItem("Instagram Feeds", () => InstagramFeed() ),
+      NavMenuItem("Facebook Feeds", () => FacebookFeeds() ),
+
     ];
 
     @override
